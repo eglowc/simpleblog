@@ -4,7 +4,9 @@ package com.eglowc.simpleblog.models;
 
 import com.eglowc.simpleblog.models.support.Role;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -12,9 +14,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.*;
 
 /**
- * Created by HCLEE on 2016. 10. 4..
- *
- * @author HCLEE
+ * @author eglowc<eglowc@gmail.com>
  */
 @Entity
 @Data

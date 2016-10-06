@@ -6,9 +6,7 @@ import lombok.ToString;
 import org.omg.CORBA.UNKNOWN;
 
 /**
- * Created by HCLEE on 2016. 10. 4..
- *
- * @author HCLEE
+ * @author eglowc<eglowc@gmail.com>
  */
 @AllArgsConstructor
 @Getter

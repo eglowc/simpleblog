@@ -1,5 +1,6 @@
 package com.eglowc.simpleblog.models;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -13,14 +14,12 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 /**
- * Created by HCLEE on 2016. 10. 4..
- *
- * @author HCLEE
+ * @author eglowc<eglowc@gmail.com>
  */
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
+@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity {
 
     @Id
@@ -28,9 +27,9 @@ public abstract class BaseEntity {
     private long id;
 
     @CreatedDate
-    private LocalDateTime created;
+    LocalDateTime created;
 
     @LastModifiedDate
-    private LocalDateTime updated;
+    LocalDateTime updated;
 
 }

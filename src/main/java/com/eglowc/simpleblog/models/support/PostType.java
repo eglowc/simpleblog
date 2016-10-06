@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 /**
- * Created by HCLEE on 2016. 10. 4..
- *
- * @author HCLEE
+ * @author eglowc<eglowc@gmail.com>
  */
 @AllArgsConstructor
 @Getter

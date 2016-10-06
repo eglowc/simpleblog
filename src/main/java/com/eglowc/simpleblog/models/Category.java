@@ -6,9 +6,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.Entity;
 
 /**
- * Created by HCLEE on 2016. 10. 4..
- *
- * @author HCLEE
+ * @author eglowc<eglowc@gmail.com>
  */
 @Entity
 @Data
