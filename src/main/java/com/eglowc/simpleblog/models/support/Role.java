@@ -3,7 +3,6 @@ package com.eglowc.simpleblog.models.support;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
-import org.omg.CORBA.UNKNOWN;
 
 /**
  * @author eglowc<eglowc@gmail.com>

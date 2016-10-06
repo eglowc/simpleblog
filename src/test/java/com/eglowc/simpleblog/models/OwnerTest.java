@@ -18,9 +18,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
 
 /**
- * Created by HCLEE on 2016. 10. 6..
- *
- * @author HCLEE
+ * @author eglowc<eglowc@gmail.com>
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest

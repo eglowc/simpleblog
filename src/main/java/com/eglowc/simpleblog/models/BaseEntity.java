@@ -1,6 +1,5 @@
 package com.eglowc.simpleblog.models;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;

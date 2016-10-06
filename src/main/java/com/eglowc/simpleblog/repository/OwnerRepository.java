@@ -6,9 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 /**
- * Created by HCLEE on 2016. 10. 6..
- *
- * @author HCLEE
+ * @author eglowc<eglowc@gmail.com>
  */
 public interface OwnerRepository extends JpaRepository<Owner, Long> {
     Optional<Owner> findByEmail(String email);

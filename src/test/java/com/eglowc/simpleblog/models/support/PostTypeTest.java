@@ -7,9 +7,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.*;
 
 /**
- * Created by HCLEE on 2016. 10. 4..
- *
- * @author HCLEE
+ * @author eglowc<eglowc@gmail.com>
  */
 public class PostTypeTest {
 
