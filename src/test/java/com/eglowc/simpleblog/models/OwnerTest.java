@@ -4,6 +4,7 @@ import com.eglowc.simpleblog.models.support.Role;
 import com.eglowc.simpleblog.repository.OwnerRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -27,6 +28,9 @@ public class OwnerTest {
 
     @Autowired
     private OwnerRepository repository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Test
     public void shouldSaveOwner() throws Exception {

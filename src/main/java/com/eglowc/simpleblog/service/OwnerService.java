@@ -1,9 +1,11 @@
 package com.eglowc.simpleblog.service;
 
 import com.eglowc.simpleblog.models.Owner;
+import com.eglowc.simpleblog.models.support.Role;
 import com.eglowc.simpleblog.repository.OwnerRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.stream.Stream;
 
 /**
@@ -19,5 +21,10 @@ public class OwnerService {
 
     public Stream<Owner> getOwnerStream() {
         return this.ownerRepository.findAll().stream();
+    }
+
+    public Optional<Owner> createOwner(Owner owner) {
+        owner.setRole(Role.OWNER);
+        return Optional.ofNullable(this.ownerRepository.save(owner));
     }
 }
