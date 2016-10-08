@@ -23,7 +23,7 @@ public class OwnerService {
         return this.ownerRepository.findAll().stream();
     }
 
-    public Optional<Owner> createOwner(Owner owner) {
+    public Optional<Owner> createOwner(final Owner owner) {
         owner.setRole(Role.OWNER);
         return Optional.ofNullable(this.ownerRepository.save(owner));
     }

@@ -1,11 +1,14 @@
 package com.eglowc.simpleblog.web;
 
 import com.eglowc.simpleblog.dto.OwnerDto;
+import com.eglowc.simpleblog.exception.CouldNotCreateOwner;
 import com.eglowc.simpleblog.models.Owner;
 import com.eglowc.simpleblog.service.OwnerService;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -15,6 +18,7 @@ import java.util.Optional;
  * @author eglowc<eglowc@gmail.com>
  */
 @RestController
+@Slf4j
 @RequestMapping("/owner")
 public class OwnerController {
 
@@ -26,10 +30,9 @@ public class OwnerController {
         this.modelMapper = modelMapper;
     }
 
-
     @GetMapping
     public ResponseEntity getOwner() {
-        Optional<Owner> optOwner =
+        final Optional<Owner> optOwner =
                 ownerService.getOwnerStream().findFirst();
 
         if (optOwner.isPresent()) {
@@ -41,17 +44,18 @@ public class OwnerController {
     }
 
     @PutMapping("/create")
-    public ResponseEntity createOwner(@RequestBody @Valid final OwnerDto.Create createOwner) {
-        Optional<Owner> created =
+    public ResponseEntity createOwner(@RequestBody @Valid final OwnerDto.Create createOwner,
+                                      BindingResult result) {
+        final Optional<Owner> created =
                 ownerService.createOwner(modelMapper.map(createOwner, Owner.class));
 
         if (created.isPresent()) {
             final OwnerDto.Read read = modelMapper.map(created.get(), OwnerDto.Read.class);
             return new ResponseEntity<>(read, HttpStatus.CREATED);
         } else {
-            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+            log.debug("Owner 생성 예외, 생성 후 반환값을 가져오지 못했음.");
+            throw new CouldNotCreateOwner();
         }
-
-
     }
+
 }
