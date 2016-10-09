@@ -1,8 +1,9 @@
 package com.eglowc.simpleblog.web;
 
-import com.eglowc.simpleblog.dto.OwnerDto;
 import com.eglowc.simpleblog.models.Owner;
 import com.eglowc.simpleblog.models.support.Role;
+import com.eglowc.simpleblog.repository.OwnerRepository;
+import com.eglowc.simpleblog.web.dto.OwnerDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.modelmapper.ModelMapper;
@@ -10,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -26,6 +30,8 @@ import static org.springframework.http.HttpStatus.OK;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Transactional
+@ActiveProfiles(value = "dev")
 public class OwnerControllerTest {
 
     @Autowired
@@ -34,6 +40,8 @@ public class OwnerControllerTest {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private OwnerRepository ownerRepository;
 
     private Owner getInitiateOwner() {
         Owner owner = new Owner();
@@ -57,6 +65,7 @@ public class OwnerControllerTest {
     }
 
     @Test
+    @Rollback(false)
     public void getOwnerWhenFindOwner() throws Exception {
         // given
         this.restTemplate.put("/owner/create", modelMapper.map(getInitiateOwner(), OwnerDto.Create.class));
@@ -69,6 +78,7 @@ public class OwnerControllerTest {
         assertThat("Owner 가 null 이 아니다", result.getBody(), is(notNullValue()));
         assertThat("Role.OWNER 역할을 갖는다", result.getBody().getRole(), is(equalTo(Role.OWNER)));
 
+        this.ownerRepository.deleteAll();
     }
 
 }
