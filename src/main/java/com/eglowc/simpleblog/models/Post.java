@@ -5,10 +5,8 @@ import com.eglowc.simpleblog.models.support.PostStatus;
 import com.eglowc.simpleblog.models.support.PostType;
 import com.sun.org.apache.xpath.internal.operations.String;
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 
 /**
  * @author eglowc<eglowc@gmail.com>
@@ -20,11 +18,10 @@ public class Post extends BaseEntity {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private Owner owner;
 
-    @NotBlank
-    @Max(value = 90)
+    @Column(nullable = false)
     private String title;
 
-    @NotBlank
+    @Column(nullable = false)
     private String contents;
 
     @Enumerated(EnumType.STRING)
