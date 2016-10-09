@@ -23,3 +23,27 @@ spring:
 logging:
   level:
     com.eglowc.simpleblog: DEBUG
+---
+spring:
+  profiles:
+    active: pgql
+  datasource:
+    platform: postgresql
+    initialize: true
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/simpleblog
+    username: HCLEE
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database: postgresql
+    show-sql: true
+    properties.hibernate.format_sql: true
+logging:
+  level:
+    com.eglowc.simpleblog: DEBUG
+    root: INFO
+    org:
+      springframework.web: ERROR
+      hibernate: ERROR
