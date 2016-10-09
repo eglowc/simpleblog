@@ -1,10 +1,7 @@
 package com.eglowc.simpleblog.aspect;
 
-import org.aspectj.lang.annotation.Before;<<<<<<< HEAD
+
 import com.eglowc.simpleblog.web.error.BindingResultErrorUtil;
-=======
-import com.eglowc.simpleblog.exception.BindingResultErrorUtil;
->>>>>>> e36aefa85e0dae4c87299a8542bf70642bdd48be
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
