@@ -1,4 +1,4 @@
-package com.eglowc.simpleblog.web.support;
+package com.eglowc.simpleblog.web.error;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

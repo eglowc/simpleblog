@@ -1,4 +1,4 @@
-package com.eglowc.simpleblog.exception;
+package com.eglowc.simpleblog.web.error.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

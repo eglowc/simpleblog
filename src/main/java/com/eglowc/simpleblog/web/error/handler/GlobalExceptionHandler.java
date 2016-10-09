@@ -1,9 +1,10 @@
-package com.eglowc.simpleblog.exception.handler;
+package com.eglowc.simpleblog.web.error.handler;
 
-import com.eglowc.simpleblog.exception.BindingResultHasErrorsException;
-import com.eglowc.simpleblog.exception.CouldNotCreateOwner;
-import com.eglowc.simpleblog.web.support.ErrorCode;
-import com.eglowc.simpleblog.web.support.ErrorResponse;
+import com.eglowc.simpleblog.web.error.ErrorCode;
+import com.eglowc.simpleblog.web.error.ErrorResponse;
+import com.eglowc.simpleblog.web.error.exception.AlreadyExistOwnerException;
+import com.eglowc.simpleblog.web.error.exception.BindingResultHasErrorsException;
+import com.eglowc.simpleblog.web.error.exception.CouldNotCreateOwnerException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,11 +40,11 @@ public class GlobalExceptionHandler {
                 ), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(CouldNotCreateOwner.class)
-    public ResponseEntity handleCouldNotCreateOwnerException() {
+    @ExceptionHandler(value = {CouldNotCreateOwnerException.class, AlreadyExistOwnerException.class})
+    public ResponseEntity handleCouldNotCreateOwnerException(RuntimeException e) {
         return new ResponseEntity<>(
                 ErrorResponse.setRequestErrorInfo(
-                        "Owner 를 만드는데 실패했습니다.",
+                        e.getMessage(),
                         ErrorCode.FAIL_CREATE_OWNER
                 ), HttpStatus.EXPECTATION_FAILED);
     }

@@ -1,4 +1,4 @@
-package com.eglowc.simpleblog.dto;
+package com.eglowc.simpleblog.web.dto;
 
 import com.eglowc.simpleblog.models.support.Role;
 import lombok.Data;

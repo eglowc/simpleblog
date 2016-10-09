@@ -1,5 +1,6 @@
-package com.eglowc.simpleblog.exception;
+package com.eglowc.simpleblog.web.error;
 
+import com.eglowc.simpleblog.web.error.exception.BindingResultHasErrorsException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 
