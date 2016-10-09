@@ -1,6 +1,6 @@
 package com.eglowc.simpleblog.aspect;
 
-import com.eglowc.simpleblog.exception.BindingResultErrorUtil;
+import com.eglowc.simpleblog.web.error.BindingResultErrorUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;

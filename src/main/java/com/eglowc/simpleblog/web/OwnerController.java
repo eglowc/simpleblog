@@ -1,9 +1,9 @@
 package com.eglowc.simpleblog.web;
 
-import com.eglowc.simpleblog.dto.OwnerDto;
-import com.eglowc.simpleblog.exception.CouldNotCreateOwner;
 import com.eglowc.simpleblog.models.Owner;
 import com.eglowc.simpleblog.service.OwnerService;
+import com.eglowc.simpleblog.web.dto.OwnerDto;
+import com.eglowc.simpleblog.web.error.exception.CouldNotCreateOwnerException;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -54,7 +54,7 @@ public class OwnerController {
             return new ResponseEntity<>(read, HttpStatus.CREATED);
         } else {
             log.debug("Owner 생성 예외, 생성 후 반환값을 가져오지 못했음.");
-            throw new CouldNotCreateOwner();
+            throw new CouldNotCreateOwnerException("Owner 를 생성하는데 실패했습니다.");
         }
     }
 
